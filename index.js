@@ -60,7 +60,7 @@ function showAllSizes() {
 document.addEventListener('readystatechange', () => {
   if (document.readyState !== 'complete') {
     return;
-  }
+  } else console.log('ready');
 
   const width = document.getElementById('width');
   width.addEventListener('change', () => {
