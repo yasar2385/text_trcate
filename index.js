@@ -56,19 +56,13 @@ function showAllSizes() {
   }
 }
 
-document.addEventListener('readystatechange', () => {
-  if (document.readyState !== 'complete') {
-    return console.log('document.readyState');
-  } else console.log('ready');
-
-  const width = document.getElementById('width');
-  width.addEventListener('change', () => {
-    document.querySelector(
-      '.container'
-    ).style.gridTemplateColumns = `${width.value}px repeat(5, auto)`;
-
-    showAllSizes();
-  });
+const width = document.getElementById('width');
+width.addEventListener('change', () => {
+  document.querySelector(
+    '.container'
+  ).style.gridTemplateColumns = `${width.value}px repeat(5, auto)`;
 
   showAllSizes();
 });
+
+showAllSizes();
