@@ -79,7 +79,7 @@ input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
   opacity: 1;
 }
-#AuthorEditDialog #author_edit_xref_labels {
+#author_edit_xref_labels {
   display: grid !important;
   grid-template-columns: repeat(14, 37px);
   row-gap: 11px;
