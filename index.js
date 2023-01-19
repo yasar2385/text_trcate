@@ -66,3 +66,76 @@ width.addEventListener('change', () => {
 });
 
 showAllSizes();
+var OBJ_HTML = {
+  HTML: {
+    in: '',
+    out: './',
+    files: [
+      'editor6.html',
+      'index.html',
+      'login.html',
+      'validateurl.html',
+      'validateurloup.html',
+      'loginpubkit.html',
+      'userdashboard.html',
+      'dashboard.html',
+      'editor6TrackView.html',
+      'sandbox.html',
+      'landsandbox.html',
+    ],
+  },
+  SNIPPET_HTML: {
+    in: 'snippet/',
+    out: 'snippet/',
+    files: ['doi.html', 'ErrorLog.html', 'sharedLink.html', 'autoupload.html'],
+  },
+  PLUGINS_HTML: {
+    in: 'ckeditor/plugins/annotorious/',
+    out: 'ckeditor/plugins/annotorious/',
+    files: ['ImgAnnot.html'],
+  },
+};
+async function rewrite() {
+  const obj = {
+    name: 'Jean-Luc Picard',
+    rank: 'Captain',
+  };
+
+  // Prints "name Jean-Luc Picard" followed by "rank Captain"
+  Object.keys(obj).forEach((key) => {
+    //console.log(key, obj[key]);
+  });
+  // Prints "Jean-Luc Picard" followed by "Captain"
+  Object.values(obj).forEach((val) => {
+    //console.log(val);
+  });
+  Object.entries(obj).forEach((entry) => {
+    const [key, value] = entry;
+    console.log(key, value);
+  });
+
+  Array.from(Object.keys(OBJ_HTML)).forEach((ARR, index) => {
+    var full_path = OBJ_HTML[ARR]['files'].map(
+      (el) => OBJ_HTML[ARR]['in'] + el
+    );
+    let out_path = OBJ_HTML[ARR]['out'];
+    // console.log(OBJ_HTML[ARR]['files']);
+    console.log(full_path);
+    // return src(full_path)
+    //   .pipe(replace(/([v]{1})(\d+\.)(\d+\.)(\*|\d+\-\d+|\d+)/g, iVersion))
+    //   .pipe(dest(`${path}`));
+  });
+
+  Object.entries(OBJ_HTML).forEach((FILES_ARRAY) => {
+    const [key, FILE] = FILES_ARRAY;
+    // console.log(FILE);
+    var full_path = FILE.files.map((el) => FILE.in + el);
+    // console.log(full_path);
+    return src(full_path)
+      .pipe(replace(/([v]{1})(\d+\.)(\d+\.)(\*|\d+\-\d+|\d+)/g, iVersion))
+      .pipe(dest(`${FILE.out}`));
+  });
+
+  await Promise.resolve('some result');
+}
+rewrite();
